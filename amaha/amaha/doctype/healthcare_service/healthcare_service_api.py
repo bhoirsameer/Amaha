@@ -1,6 +1,6 @@
 import frappe
 
-@frappe.whitelist()
+@frappe.whitelist(allow_guest=1)
 def get_list_of_healthcare_services():
     return frappe.db.get_all(
         "Healthcare Service",pluck = "name"

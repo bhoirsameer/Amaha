@@ -4,7 +4,7 @@ from frappe import _
 from frappe.utils import flt
 from amaha.utils import success_response,error_response
 
-@frappe.whitelist()
+@frappe.whitelist(allow_guest=1)
 def get_estimated_end_time_and_duration(doctype="Healthcare Service", doc_name=None,appointment_time = None):
     if appointment_time == "0":
         frappe.throw("Please Select appointment time")
@@ -35,7 +35,7 @@ def get_estimated_end_time_and_duration(doctype="Healthcare Service", doc_name=N
     }
 
 
-@frappe.whitelist()
+@frappe.whitelist(allow_guest=1)
 def create_appointment(**kwargs):
     try:
         master_fields = {

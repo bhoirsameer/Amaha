@@ -5,6 +5,8 @@ app_description = "Amaha Healthcare App"
 app_email = "sameerbhoir184@gmail.com"
 app_license = "mit"
 
+import frappe
+
 # Apps
 # ------------------
 
@@ -250,6 +252,15 @@ fixtures = [
                 "in",[
                     "Amaha"
                 ]
+            ]
+        }
+    },
+    {
+        "dt": "Custom DocPerm",
+        "filters": {
+            "name": [
+                "in",
+                    frappe.db.get_all("Custom DocPerm",fields = ["name"],pluck = "name")
             ]
         }
     },

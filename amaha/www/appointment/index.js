@@ -244,19 +244,17 @@ async function fetch_and_update_service_details(){
 
     const serviceSelect = document.getElementById("service_select").value;     
     const appointmentTimeInput = document.getElementById("appointment_time").value; 
-    console.log(serviceSelect,appointmentTimeInput,"----0000000000000000000000============")
 
     try {
-        const response = await fetch("/api/method/amaha.amaha.doctype.patient_appointment.patient_appointment_api.get_estimated_end_time_and_duration", {
-            method: "POST",
+        const params = new URLSearchParams({
+            doc_name: serviceSelect,
+            appointment_time: appointmentTimeInput
+        }).toString();
+        const response = await fetch(`/api/method/amaha.amaha.doctype.patient_appointment.patient_appointment_api.get_estimated_end_time_and_duration?${params}`, {
+            method: "GET",
             headers: {
-                "Content-Type": "application/json",
-                "X-Frappe-CSRF-Token": csrf_token
-            },
-            body: JSON.stringify({
-                doc_name: serviceSelect,
-                appointment_time: appointmentTimeInput
-            })
+                "Content-Type": "application/json" 
+            }
         });
 
         const result = await response.json();
