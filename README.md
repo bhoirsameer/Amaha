@@ -1,41 +1,45 @@
-### Amaha
+1: Create a new bench
+ a: bench init --frappe-branch version-15 frappe-bench
+ b: cd frappe-bench
 
-Amaha Healthcare App
+2: Get the ERPNext app
+ bench get-app --branch version-15 erpnext
 
-### Installation
+3: Get the custom Healthcare app
+ bench get-app https://github.com/bhoirsameer/Amaha.git --branch feat/create_healthcare_app
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+4: Create a new site
+ bench new-site site-name
+ Enter the required database details and set the Administrator password when prompted.
 
-```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch develop
-bench install-app amaha
-```
+5: Install apps on the site
+ a: bench --site [site-name] install-app erpnext
+ b: bench --site [site-name] install-app [healthcare app name] (Replace [healthcare app name] with your app's actual name, e.g., amaha)
 
-### Contributing
+6: Set the active site
+ bench use site-name
 
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
+7: Start the bench
+ bench start
+ Keep this terminal running.
 
-```bash
-cd apps/amaha
-pre-commit install
-```
+8: Open a new terminal, navigate to the bench directory, and run migrations
+ a: cd frappe-bench
+ b: bench migrate
 
-Pre-commit is configured to use the following tools for checking and formatting your code:
+9: Run localhost in the browser
+ Go to http://localhost:8000
+ Complete the setup wizard by filling in company details, currency, time zone, etc.
 
-- ruff
-- eslint
-- prettier
-- pyupgrade
+10: Enable server scripts globally
+ bench set-config -g server_script_enabled 1
 
-### CI
+11: Go to the Awesome Bar and search for Healthcare Service
+ Create a few new records for testing.
 
-This app can use GitHub Actions for CI. The following workflows are configured:
+12: Go to the Awesome Bar and search for Patient Appointment
+ Create a few new records for testing.
 
-- CI: Installs this app and runs unit tests on every push to `develop` branch.
-- Linters: Runs [Frappe Semgrep Rules](https://github.com/frappe/semgrep-rules) and [pip-audit](https://pypi.org/project/pip-audit/) on every pull request.
-
-
-### License
-
-mit
+13: To create appointments from the custom UI
+ Go to http://localhost:8000/appointment
+ Fill in the details in the page form and submit to create appointment records.
