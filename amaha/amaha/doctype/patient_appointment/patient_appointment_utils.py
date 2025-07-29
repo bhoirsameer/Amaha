@@ -30,7 +30,7 @@ def validate_appointment_is_within_working_hours(self):
     if not (schedule.start_time <= self.appointment_time < schedule.end_time and
             schedule.start_time < str(self.estimated_end_time) <= schedule.end_time):
         frappe.throw(
-            "Appointment must be within working hours ({} to {})."
+            "Appointment must be within working hours ({} to {}). You can update it from Global Settings Doctype"
             .format(frappe.bold(schedule.start_time),frappe.bold(schedule.end_time)),
             exc=ValidationError,
             title="Time Conflict"

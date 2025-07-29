@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch('/api/method/amaha.amaha.doctype.healthcare_service.healthcare_service_api.get_list_of_healthcare_services')  // <-- Replace with your API endpoint
         .then(response => response.json())
         .then(data => {
-            console.log(data,"4444333333333333333")
             const serviceSelect = document.getElementById('service_select');
             serviceSelect.innerHTML = ''; // Clear existing options
 
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .catch(error => {
-            console.error('Error fetching services:', error);
             const serviceSelect = document.getElementById('service_select');
             serviceSelect.innerHTML = '<option value="">Failed to load services</option>';
         });
@@ -121,7 +119,6 @@ function handleFormSubmission() {
     const form = document.getElementById('appointmentForm');
     
     if (!form) {
-        console.error('Appointment form not found');
         return;
     }
 
@@ -148,7 +145,6 @@ function handleFormSubmission() {
             handleApiResponse(result, form);
 
         } catch (error) {
-            console.error('Network/Parse Error:', error);
             setLoadingState(submitBtn, submitText, false);
             showPopup('error', 'Connection Error', 'Unable to connect to server. Please check your connection and try again.');
         }
@@ -196,7 +192,6 @@ function getCsrfToken() {
         
         return '';
     } catch (error) {
-        console.warn('Could not get CSRF token:', error);
         return '';
     }
 }
@@ -249,9 +244,7 @@ async function fetch_and_update_service_details(){
 
     const serviceSelect = document.getElementById("service_select").value;     
     const appointmentTimeInput = document.getElementById("appointment_time").value; 
-    console.log(serviceSelect,appointmentTimeInput,"@@@@@@@")
     if (!serviceSelect || !appointmentTimeInput) {
-        console.error("Required input fields not found in DOM.");
         return;
     }   
 
@@ -281,7 +274,6 @@ async function fetch_and_update_service_details(){
         }
 
     } catch (error) {
-        console.error('Network/Parse Error:', error);
         setLoadingState(submitBtn, submitText, false);
         showPopup('error', 'Connection Error', 'Unable to connect to server. Please check your connection and try again.');
     }
