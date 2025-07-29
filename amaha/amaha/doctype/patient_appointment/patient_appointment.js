@@ -4,12 +4,6 @@
 frappe.ui.form.on("Patient Appointment", {
     service(frm) {
         const { appointment_time, service } = frm.doc;
-
-        if (!appointment_time) {
-            frappe.throw(__("Please set the appointment time before selecting a service."));
-            return;
-        }
-
         if (!service) {
             frm.set_value("estimated_end_time", null);
             return;

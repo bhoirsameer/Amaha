@@ -244,9 +244,7 @@ async function fetch_and_update_service_details(){
 
     const serviceSelect = document.getElementById("service_select").value;     
     const appointmentTimeInput = document.getElementById("appointment_time").value; 
-    if (!serviceSelect || !appointmentTimeInput) {
-        return;
-    }   
+    console.log(serviceSelect,appointmentTimeInput,"----0000000000000000000000============")
 
     try {
         const response = await fetch("/api/method/amaha.amaha.doctype.patient_appointment.patient_appointment_api.get_estimated_end_time_and_duration", {

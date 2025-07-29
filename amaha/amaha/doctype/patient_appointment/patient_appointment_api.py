@@ -8,10 +8,13 @@ from amaha.utils import success_response,error_response
 def get_estimated_end_time_and_duration(doctype="Healthcare Service", doc_name=None,appointment_time = None):
     if appointment_time == "0":
         frappe.throw("Please Select appointment time")
-    if not (doctype or doc_name or appointment_time):
-        frappe.throw(_("Doctype, field name, document name and appointment_time are required."))
-
+    if not (doctype or doc_name):
+        frappe.throw(_("Doctype, document name are required."))
+    
     service_details = frappe.db.get_value(doctype, doc_name, ["duration","price"],as_dict=True)
+    if not appointment_time and doc_name:
+        return service_details
+    
     if not service_details.duration:
         frappe.throw(
             """The <b>Duration</b> field is missing for the selected service: 
@@ -22,7 +25,6 @@ def get_estimated_end_time_and_duration(doctype="Healthcare Service", doc_name=N
             title="Missing Duration"
         )
 
-    print(appointment_time,"\n\n\n")
     dt = datetime.datetime.combine(
         datetime.date.today(),
         datetime.datetime.strptime(appointment_time, "%H:%M:%S").time()
