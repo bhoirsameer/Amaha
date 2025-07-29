@@ -1,0 +1,173 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{patient_name}/{appointment_date}",
+ "creation": "2025-07-26 17:15:51.092957",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "patient_details_section",
+  "patient_name",
+  "column_break_rdod",
+  "patient_email",
+  "column_break_kanc",
+  "patient_mobile_number",
+  "section_break_plxs",
+  "appointment_date",
+  "column_break_dtmo",
+  "appointment_time",
+  "column_break_byht",
+  "service",
+  "column_break_uvia",
+  "estimated_end_time",
+  "section_break_nfpv",
+  "column_break_rbjq",
+  "status",
+  "column_break_kjwh",
+  "total_amount",
+  "column_break_foap",
+  "sales_invoice"
+ ],
+ "fields": [
+  {
+   "fieldname": "patient_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Patient Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "appointment_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Appointment Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_rdod",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "patient_email",
+   "fieldtype": "Autocomplete",
+   "label": "Patient Email"
+  },
+  {
+   "fieldname": "patient_mobile_number",
+   "fieldtype": "Data",
+   "label": "Patient Mobile Number"
+  },
+  {
+   "default": "0",
+   "fieldname": "appointment_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Appointment Time"
+  },
+  {
+   "fieldname": "service",
+   "fieldtype": "Link",
+   "label": "Service",
+   "options": "Healthcare Service"
+  },
+  {
+   "default": "0",
+   "fieldname": "estimated_end_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Estimated End Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "patient_details_section",
+   "fieldtype": "Section Break",
+   "label": "Patient Details"
+  },
+  {
+   "fieldname": "section_break_plxs",
+   "fieldtype": "Section Break",
+   "label": "Schedule Details"
+  },
+  {
+   "fieldname": "column_break_dtmo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_nfpv",
+   "fieldtype": "Section Break",
+   "label": "Other Details"
+  },
+  {
+   "fetch_from": "service.price",
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_rbjq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_foap",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice",
+   "read_only": 1
+  },
+  {
+   "default": "Scheduled",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Scheduled\nCompleted\nCancelled"
+  },
+  {
+   "fieldname": "column_break_kjwh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_kanc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_byht",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_uvia",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-07-29 11:36:41.661855",
+ "modified_by": "Administrator",
+ "module": "Amaha",
+ "name": "Patient Appointment",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

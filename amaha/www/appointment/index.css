@@ -1,0 +1,259 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 50px;
+}
+
+.container {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 15px;
+    max-width: 650px;
+    margin: auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+h2 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #343a40;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 5px;
+}
+
+.section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.field {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.field label {
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.field input, .field select {
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 14px;
+}
+
+.field input:focus, .field select:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    background-color: #fff;
+}
+
+.field select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+}
+
+.mobile-field {
+    display: flex;
+    align-items: center;
+}
+
+.mobile-field .flag {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.submit-button {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.submit-button button {
+    padding: 12px 30px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    position: relative;
+}
+
+.submit-button button:hover {
+    background: linear-gradient(135deg, #0056b3, #004085);
+}
+
+.submit-button button:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Loading spinner */
+.loading-spinner {
+    border: 2px solid transparent;
+    border-top: 2px solid #ffffff;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Fancy Date/Time Input Styling */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(40%);
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+input[type="date"]:hover::-webkit-calendar-picker-indicator,
+input[type="time"]:hover::-webkit-calendar-picker-indicator {
+    filter: invert(20%);
+}
+
+/* For Firefox */
+input[type="date"]::-moz-calendar-picker-indicator,
+input[type="time"]::-moz-calendar-picker-indicator {
+    filter: invert(40%);
+    cursor: pointer;
+}
+
+/* Popup Notification Styles */
+.popup-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+    min-width: 320px;
+    max-width: 400px;
+    color: white;
+    
+    /* Initial state - hidden */
+    opacity: 0;
+    transform: translateX(100%) translateY(-20px);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.popup-notification.show {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+}
+
+.popup-notification.hide {
+    opacity: 0;
+    transform: translateX(100%) translateY(-20px);
+    transition: all 0.5s ease-in-out;
+}
+
+.popup-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.popup-icon {
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: bold;
+    margin-top: 2px;
+}
+
+.popup-text {
+    flex: 1;
+}
+
+.popup-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 16px;
+}
+
+.popup-message {
+    font-size: 14px;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    padding: 4px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Popup types */
+.popup-success {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+}
+
+.popup-error {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+}
+
+.popup-warning {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+}
+
+.popup-info {
+    background: linear-gradient(135deg, #2196f3, #1976d2);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+    .popup-notification {
+        right: 10px;
+        left: 10px;
+        min-width: auto;
+        max-width: none;
+    }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+<head>
+    <title>Appointment Form</title>
+    <link rel="stylesheet" href="appointment/index.css" />
+</head>
+<body>
+    <div class="container">
+        <script>
+            window.csrf_token = "{{ csrf_token }}";
+        </script>
+        <form id="appointmentForm">
+            <h2>Patient Details</h2>
+            <div class="section">
+                <div class="field">
+                    <label>Patient Name *</label>
+                    <input type="text" name="patient_name" id = "patient_name" required>
+                </div>
+                <div class="field">
+                    <label>Patient Email</label>
+                    <input type="email" name="patient_email" id="patient_email">
+                </div>
+                <div class="field">
+                    <label>Patient Mobile Number</label>
+                    <div class="mobile-field">
+                        <span class="flag">🇮🇳</span>
+                        <input type="text" name="patient_mobile_number" id="patient_mobile_number">
+                    </div>
+                </div>
+            </div>
+
+            <h2>Schedule Details</h2>
+            <div class="section">
+                <div class="field">
+                    <label>Appointment Date *</label>
+                    <input type="date" name="appointment_date" id="appointment_date" required>
+                </div>
+                <div class="field">
+                    <label for="service_select">Service</label>
+                    <select id="service_select" name="service" id="appointment_date">
+                        <option value="">Loading Services...</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Appointment Time</label>
+                    <input type="time" name="appointment_time" id="appointment_time" step="1">
+                </div>
+
+                <div class="field">
+                    <label>Service Duration (minutes)</label>
+                    <input type="number" name="service_duration" id ="service_duration" min="1" step="1" readonly>
+                </div>
+
+                <div class="field">
+                    <label>Estimated End Time</label>
+                    <input type="time" name="estimated_end_time" id="estimated_end_time" step="1" readonly>
+                </div>
+
+
+                <div class="field">
+                    <label>Total Amount</label>
+                    <input type="number" name="price" id = "price" step="1" readonly>
+                </div>
+            </div>
+
+            <div class="submit-button">
+                <button type="submit" name="submit" id="submitBtn">
+                    <span id="submitText">Submit</span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script src="appointment/index.js"></script>
+</body>
+</html>
