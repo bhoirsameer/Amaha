@@ -28,7 +28,7 @@
  b: bench migrate
 
 9: Run localhost in the browser
- Go to http://localhost:8000
+ Go to http://127.0.0.1:8000
  Complete the setup wizard by filling in company details, currency, time zone, etc.
 
 10: Enable server scripts globally
@@ -41,5 +41,5 @@
  Create a few new records for testing.
 
 13: To create appointments from the custom UI
- Go to http://localhost:8000/appointment
+ Go to http://127.0.0.1:8000/appointment
  Fill in the details in the page form and submit to create appointment records.
